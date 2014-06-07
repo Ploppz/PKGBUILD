@@ -1,0 +1,15 @@
+pkgname=stlphallus-font
+pkgver=1.0
+pkgrel=1
+pkgdesc="Merged the fonts stlarch, uushi and lemon (https://github.com/phallus/fonts). "
+pkgurl="https://github.com/phallus/fonts, http://sourceforge.net/projects/stlarchfont/"
+arch=('any')
+depends=('fontconfig' 'xorg-font-utils')
+source=('git+https://github.com/Ploppz/fonts')
+md5sums=('SKIP')
+install="$pkgname.install"
+
+package() {
+  install -d "$pkgdir/usr/share/fonts/misc"
+  cp -dpr --no-preserve=ownership "$srcdir/fonts/stlphallus.pcf" "$pkgdir/usr/share/fonts/misc/"
+}

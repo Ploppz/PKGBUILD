@@ -1,0 +1,19 @@
+pkgname=ippytraxx-font
+pkgver=1.0
+pkgrel=1
+pkgdesc="A font made by Ippytraxx."
+pkgurl="https://bitbucket.org/Ippytraxx/dotfiles/overview"
+arch=('any')
+depends=('fontconfig' 'xorg-font-utils')
+source=("https://bitbucket.org/Ippytraxx/dotfiles/raw/4375ca07b865908a5ff1ceb43631185c3c142e7f/.fonts/Ippytraxx.bdf")
+md5sums=('SKIP')
+install="$pkgname.install"
+
+build() {
+	bdftopcf -o "$srcdir/Ippytraxx.pcf" "$srcdir/Ippytraxx.bdf"
+}
+
+package() {
+  install -d "$pkgdir/usr/share/fonts/misc"
+  cp -dpr --no-preserve=ownership "$srcdir/Ippytraxx.pcf" "$pkgdir/usr/share/fonts/misc/"
+}
